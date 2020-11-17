@@ -11,7 +11,7 @@ import { ApolloClient, gql } from 'apollo-boost';
 import { store, persistor } from './redux/store';
 
 import './index.css';
-import App from './App';
+import {default as App} from './App.container';
 import {resolvers, typeDefs} from './graphql/resolvers'
 
 const httpLink = createHttpLink({
@@ -32,7 +32,9 @@ client.writeData({
     cartHidden: true,
     cartItems: [],
     itemCount: 0,
-    cartTotal: 0
+    cartTotal: 0,
+    currentUser: null,
+
   }
 })
 

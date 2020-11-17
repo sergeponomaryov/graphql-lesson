@@ -1,20 +1,21 @@
 import React from 'react';
 
-import {Query} from 'react-apollo'
+import {Query, Mutation} from 'react-apollo'
 import {gql} from 'apollo-boost'
 
 import Header from './header.component'
 
-const GET_CART_HIDDEN = gql`
+const GET_HEADER_PROPERTIES = gql`
 {
     cartHidden @client
+    currentUser @client
 }
 `;
 
 const HeaderContainer = () => (
-    <Query query={GET_CART_HIDDEN}>
+    <Query query={GET_HEADER_PROPERTIES}>
         {
-            ({data: {cartHidden}}) => <Header hidden={cartHidden}></Header>
+            ({data: {currentUser, cartHidden}}) => <Header hidden={cartHidden} currentUser={currentUser}></Header>
         }
     </Query>
 )
